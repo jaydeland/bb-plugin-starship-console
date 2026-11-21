@@ -7,7 +7,6 @@ block = f'''{START}
 /* The schematic is a mask, so its ink takes --lcars-schematic in every theme and mode. */
 :root [data-thread-window]::before,
 :root.dark [data-thread-window]::before {{
-  background-image: none !important;
   background-color: var(--lcars-schematic);
   mask: url("data:image/png;base64,{b64}") center / contain no-repeat;
 }}
@@ -15,6 +14,10 @@ block = f'''{START}
 for n in ["lcars-tng", "lcars-science", "lcars-ten-forward"]:
     p = ROOT / "themes" / n / "theme.css"
     s = p.read_text()
-    s = s.split("\n" + START)[0] if START in s else s
+    if START in s:
+        # Remove only the old blueprint block (up to the next section marker), so later rules survive.
+        head, tail = s.split(START, 1)
+        nxt = tail.find("\n/* ---------- ")
+        s = head.rstrip("\n") + ("\n\n" + tail[nxt:].strip("\n") if nxt != -1 else "")
     p.write_text(s.rstrip("\n") + "\n\n" + block)
     print(n, len(s) + len(block))

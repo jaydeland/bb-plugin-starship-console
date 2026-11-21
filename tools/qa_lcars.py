@@ -156,10 +156,11 @@ for name, path in FILES.items():
     only_l = set(L) - set(D); only_d = set(D) - set(L)
     if only_l or only_d: issues.append((name, "tokens", f"key mismatch light-only={sorted(only_l)} dark-only={sorted(only_d)}"))
 
-    # Chrome rules: data URIs
+    # Chrome rules: data URIs. Every url() must be a quoted data URI; inside an SVG only url(%23id) fragment refs are allowed.
     uris = re.findall(r'url\("([^"]*)"\)', chrome)
-    n_url = chrome.count("url(")
-    if n_url != len(uris): issues.append((name, "svg", f"url() count {n_url} vs quoted {len(uris)}"))
+    if re.search(r"url\(", re.sub(r'url\("[^"]*"\)', "", chrome)): issues.append((name, "svg", "url() outside a quoted data URI"))
+    for raw in uris:
+        if raw.startswith("data:image/svg") and re.search(r"url\((?!%23)", raw): issues.append((name, "svg", "SVG data URI references a non-fragment url()"))
     for idx, raw in enumerate(uris):
         if not raw.startswith("data:image/svg"): continue
         if "#" in raw: issues.append((name, "svg", f"uri[{idx}] has raw #"))
@@ -172,26 +173,17 @@ for name, path in FILES.items():
         except ET.ParseError as e:
             res = f"PARSE FAIL {e}"; issues.append((name, "svg", f"uri[{idx}] {e}"))
         print(f"  uri[{idx}] {raw[:40]}... {res} ({len(svg)} chars decoded)")
-    # Fleet-tile rules
+    # Blueprint background: one ::before host, masked by the galaxy PNG in the last block of the file.
     if "drag-region" in css: issues.append((name, "fleet", "comm badge / drag-region rule still present"))
-    if "Comm badge" in css: issues.append((name, "fleet", "comm badge comment still present"))
-    for cls, (mrx) in (("light", r"\[data-thread-window\]::before \{(.*?)\n\}"), ("dark", r"\.dark \[data-thread-window\]::before \{(.*?)\n\}")):
-        m = re.search(mrx, chrome, re.S)
-        if not m: issues.append((name, "fleet", f"{cls} ::before rule missing")); continue
-        b = m.group(1)
-        if cls == "light":
-            for need in ("isolation", ):
-                pass
-            for need in ("position: absolute", "z-index: -1", "pointer-events: none", "opacity: var(--lcars-schematic-opacity)",
-                         "background-repeat: repeat", "background-position: 0 0", "background-size: 1400px 950px"):
-                if need not in b: issues.append((name, "fleet", f"light ::before missing {need!r}"))
-        if "viewBox='0 0 1400 950'" not in b: issues.append((name, "fleet", f"{cls} tile viewBox not 1400x950"))
-        nships = len(re.findall(r"rotate\(-?\d+\)", urllib.parse.unquote(b)))
-        nlabels = len(re.findall(r"font-size='7'", b))
-        print(f"  {cls} tile: ships={nships} labels={nlabels} bytes={len(b)} opacity-token={tokens(light_body if cls=='light' else dark_body).get('lcars-schematic-opacity')}")
-        if not 6 <= nships <= 8: issues.append((name, "fleet", f"{cls} ship count {nships}"))
-        if len(b) > 25000: issues.append((name, "fleet", f"{cls} data URI {len(b)} bytes > 25KB"))
-        if "stroke-width='1.2'" not in b: issues.append((name, "fleet", f"{cls} stroke-width 1.2 missing"))
+    m = re.search(r"\[data-thread-window\]::before \{(.*?)\n\}", chrome, re.S)
+    if not m: issues.append((name, "blueprint", "::before rule missing"))
+    else:
+        for need in ("position: absolute", "z-index: -1", "pointer-events: none", "opacity: var(--lcars-schematic-opacity)"):
+            if need not in m.group(1): issues.append((name, "blueprint", f"::before missing {need!r}"))
+    if "viewBox='0 0 1400 950'" in chrome: issues.append((name, "blueprint", "dead SVG tile still present"))
+    bp = chrome[chrome.find("/* ---------- LCARS blueprint background"):]
+    if "mask: url(\"data:image/png;base64," not in bp: issues.append((name, "blueprint", "galaxy mask missing"))
+    if "\n/* ---------- " in bp[10:]: issues.append((name, "blueprint", "blueprint block is not the last block (apply_blueprint.py would move rules)"))
     if ".thread-scrollbar" not in css: issues.append((name, "fleet", ".thread-scrollbar rule missing"))
     REPORT[name] = dict(L=L, D=D, chrome=chrome, uris=uris)
 
@@ -206,22 +198,27 @@ for n in FILES:
         if need not in ch: issues.append((n, "selectors", f"missing selector {need}"))
     for need in ('[data-split-pane-id] > header::before', '[data-split-pane-id] > header::after', '[data-split-pane-id] > header .bb-thread-title',
                  '[role="status"].fixed.inset-x-0.bottom-0::before', '[role="status"].fixed.inset-x-0.bottom-0::after',
-                 'border-bottom-left-radius: 18px', 'border-top: 4px solid var(--lcars-frame-2)', 'padding-left: 46px', 'padding-right: 48px'):
+                 '[data-thread-window]::after', 'mask-composite: subtract', 'border-top: 4px solid var(--lcars-frame-2)', 'padding-left: 46px', 'padding-right: 48px'):
         if need not in ch: issues.append((n, "bars", f"missing {need}"))
     bars = ch[ch.find("/* ---------- LCARS top bar and bottom bar"):].split("/* ---------- LCARS blueprint background")[0]
-    if bars.count("pointer-events: none") != 3: issues.append((n, "bars", f"expected 3 pointer-events:none (header ::before, ::after, status shared rule), got {bars.count('pointer-events: none')}"))
+    frame = bars[bars.find("/* ---------- LCARS window frame"):]
+    if bars.split("/* ---------- LCARS window frame")[0].count("pointer-events: none") != 1: issues.append((n, "bars", "expected 1 pointer-events:none in the status bar rules"))
+    for sel in ("header::after {", "[data-thread-window]::after {", "[data-thread-window] > div:only-child::after {"):
+        blk = frame[frame.find(sel):].split("\n}")[0]
+        if "pointer-events: none" not in blk: issues.append((n, "bars", f"{sel} must not take pointer events"))
     if "text-transform" in bars.split(".bb-thread-title")[1].split("}")[0]: issues.append((n, "bars", "title is uppercased"))
-    # segment geometry: 28+3+14+3+48 = 96 from the right edge, 3px gap before the first segment
-    if "calc(100% - 99px)" not in bars or "var(--lcars-pill-4) calc(100% - 48px) 100%" not in bars: issues.append((n, "bars", "segment gradient geometry changed"))
+    # segment geometry: 28+3+14+3+48 = 96px wide; the mask cuts 99px so a 3px gap sits before the first segment
+    if "width: 96px" not in frame or "var(--lcars-pill-4) 48px 100%" not in frame or "99px 10px" not in frame: issues.append((n, "bars", "segment geometry changed"))
     for banned in ("[data-thread-window]::before",):
         if banned in bars: issues.append((n, "bars", f"bars block touches {banned}"))
     if re.search(r"(outline|box-shadow)\s*:", re.sub(r'\[data-testid="thread-secondary-panel-top-chrome"\] \{.*?\n\}', "", re.sub(r"\[data-thread-window\]::before \{.*?\n\}", "", ch, flags=re.S), flags=re.S)):
         issues.append((n, "focus", "chrome sets outline/box-shadow"))
     # Section-header rules must target the collapse toggle only (not the sort button)
     for m in re.finditer(r'button\[aria-expanded\][^{,]*', ch):
-        if not (ch[max(0, m.start()-len('section[aria-label] > div.relative > ')):m.start()] == 'section[aria-label] > div.relative > ' and m.group(0).startswith('button[aria-expanded]:first-child')):
+        # Allowed: the plain toggle, or the open-group variant that adds :has() guards to the section.
+        if not (re.search(r"(section\[aria-label\]|:has\(> :is\(section, ul\) > \*\)) > div\.relative > $", ch[:m.start()]) and m.group(0).startswith('button[aria-expanded]:first-child')):
             issues.append((n, "selectors", f"unscoped header selector: {m.group(0)[:60]!r}"))
-    if ch.count(TOGGLE) != 3: issues.append((n, "selectors", f"expected 3 toggle-scoped header rules, got {ch.count(TOGGLE)}"))
+    if ch.count(TOGGLE) != 4: issues.append((n, "selectors", f"expected 4 toggle-scoped header rules, got {ch.count(TOGGLE)}"))
     # Sidebar padding, end block, card padding, header padding
     rb = lambda sel: (re.search(re.escape(sel) + r" \{(.*?)\n\}", ch, re.S) or [None, ""])[1]
     side = rb('[data-sidebar="sidebar"]')
@@ -272,10 +269,6 @@ for other in names[1:]:
     print(f"chrome incl. SVG (stroke colours normalised) identical: {ca == cb}")
     for n in names:
         pass
-    # stroke colours used per file
-    for n in names:
-        strokes = sorted(set(re.findall(r"stroke='%23([0-9A-Fa-f]{6})'", REPORT[n]["chrome"]) ))
-        print(f"  {n} stroke colours in data URIs: {strokes}")
     break
 
 BARS = {n: REPORT[n]["chrome"][REPORT[n]["chrome"].find("/* ---------- LCARS top bar and bottom bar"):] for n in names}
