@@ -10,13 +10,25 @@ LCARS themes for the bb IDE, inspired by the computer displays in *Star Trek: Th
 
 Each theme has a light mode and a dark mode.
 
+## Screenshots
+
+The account, role, cluster and profile names in the status bar are blurred.
+
+| | Dark | Light |
+|---|---|---|
+| `lcars-tng` | ![lcars-tng dark](docs/screenshots/lcars-tng-dark.jpg) | ![lcars-tng light](docs/screenshots/lcars-tng-light.jpg) |
+| `lcars-science` | ![lcars-science dark](docs/screenshots/lcars-science-dark.jpg) | ![lcars-science light](docs/screenshots/lcars-science-light.jpg) |
+| `lcars-ten-forward` | ![lcars-ten-forward dark](docs/screenshots/lcars-ten-forward-dark.jpg) | ![lcars-ten-forward light](docs/screenshots/lcars-ten-forward-light.jpg) |
+
 ## What the themes change
 
-- An LCARS elbow frame around the left sidebar, the right panel, the top bar and the bottom status bar.
-- Thread rows that look like LCARS menu buttons. The open thread is a solid pill.
-- Section headers with elbows and uppercase labels.
+- An LCARS elbow frame around the left sidebar and the right panel.
+- A thick frame around the thread window, with large elbows, a segmented top bar and a two-row bottom band with a readout.
+- Thread rows that look like LCARS menu buttons. The open thread is a solid rounded rectangle.
+- Sidebar groups in LCARS brackets. Collapsed group headers are complete bars.
+- Flat pill caps on the bottom status bar, and a TNG communicator for the Home icon.
 - Pill buttons and badges.
-- Decorative LCARS numbers ("47-1701", "LCARS 23-781").
+- Decorative LCARS numbers ("47-1701", "LCARS 23-781", "0400 · 4976").
 - A faded Galaxy-class blueprint behind the thread area. It takes the colour of the theme.
 
 All text colours pass WCAG AA contrast (4.5:1 or better).
