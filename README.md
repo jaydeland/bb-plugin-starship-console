@@ -40,7 +40,7 @@ All text colours pass WCAG AA contrast (4.5:1 or better).
 Install as a bb plugin from a local checkout:
 
 ```sh
-bb plugin install /path/to/bb-theme-lcars   # the checkout folder name can differ
+bb plugin install /path/to/bb-plugin-starship-console
 ```
 
 The plugin adds three themes. Select one in Settings, Appearance, or with the CLI:
@@ -81,4 +81,4 @@ The tools use only the Python standard library.
 ## Notes
 
 - The styles target bb's live DOM (tested on bb 0.50.1). A bb update can change the DOM hooks, and some chrome can then stop matching.
-- LCARS and Star Trek are Paramount trademarks. Keep this repo private and for internal use. Do not publish it to a plugin marketplace.
+- Fan-made and inspired by 1980s–90s TV sci-fi interfaces. Not affiliated with or endorsed by any studio. All art in this repo is original.

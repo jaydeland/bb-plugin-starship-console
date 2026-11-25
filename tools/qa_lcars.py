@@ -236,8 +236,14 @@ for n in FILES:
     # Right panel elbow
     A = 'aside[data-surface-tone="sidebar"]'
     ab, ap, aa = rb(A), rb(A + "::before"), rb(A + "::after")
-    for need in ("padding-left: 16px", "padding-top: 10px", "box-sizing: border-box", "border-left-color: transparent"):
+    for need in ("box-sizing: border-box", "border-left-color: transparent"):
         if need not in ab: issues.append((n, "aside", f"aside missing {need}"))
+    # The desktop app places native views from the aside bounds, so the aside must not add padding.
+    if "padding" in ab: issues.append((n, "aside", "aside sets padding"))
+    if "background: transparent" not in ap: issues.append((n, "aside", "aside::before missing background: transparent"))
+    tc = rb('[data-testid="thread-secondary-panel-top-chrome"]')
+    for need in ("position: relative", "z-index: 2", "padding: 14px 8px 12px 16px"):
+        if need not in tc: issues.append((n, "aside", f"panel tab row missing {need}"))
     if "position" in ab: issues.append((n, "aside", "aside sets position"))
     for need in ("position: absolute", "top: 0", "left: 0", "right: 0", "height: 100%", "border-left: 10px solid var(--lcars-frame)",
                  "border-top: 10px solid var(--lcars-frame)", "border-top-left-radius: 28px", "pointer-events: none", "z-index: 1", "box-sizing: border-box"):
