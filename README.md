@@ -1,12 +1,14 @@
-# bb-theme-lcars
+# Starship Console
 
-LCARS themes for the bb IDE, inspired by the computer displays in *Star Trek: The Next Generation*.
+Retro sci-fi console themes for the bb IDE. Inspired by 1980s–90s TV sci-fi interfaces. Fan-made; not affiliated with any studio.
 
-| Theme | Accent |
-|---|---|
-| `lcars-tng` | Orange and lavender (the classic bridge look) |
-| `lcars-science` | Blue (Science/Ops) |
-| `lcars-ten-forward` | Purple and mauve (Ten Forward) |
+| Theme | Id | Accent |
+|---|---|---|
+| Starship Console: Bridge | `console-bridge` | Orange and lavender (the classic bridge look) |
+| Starship Console: Science | `console-science` | Blue (science and operations) |
+| Starship Console: Lounge | `console-lounge` | Purple and mauve (a quiet lounge palette) |
+
+The theme source folders keep their original names: `themes/lcars-tng` (Bridge), `themes/lcars-science` (Science) and `themes/lcars-ten-forward` (Lounge).
 
 Each theme has a light mode and a dark mode.
 
@@ -16,20 +18,20 @@ The account, role, cluster and profile names in the status bar are blurred.
 
 | | Dark | Light |
 |---|---|---|
-| `lcars-tng` | ![lcars-tng dark](docs/screenshots/lcars-tng-dark.jpg) | ![lcars-tng light](docs/screenshots/lcars-tng-light.jpg) |
-| `lcars-science` | ![lcars-science dark](docs/screenshots/lcars-science-dark.jpg) | ![lcars-science light](docs/screenshots/lcars-science-light.jpg) |
-| `lcars-ten-forward` | ![lcars-ten-forward dark](docs/screenshots/lcars-ten-forward-dark.jpg) | ![lcars-ten-forward light](docs/screenshots/lcars-ten-forward-light.jpg) |
+| Bridge | ![Bridge dark](docs/screenshots/lcars-tng-dark.jpg) | ![Bridge light](docs/screenshots/lcars-tng-light.jpg) |
+| Science | ![Science dark](docs/screenshots/lcars-science-dark.jpg) | ![Science light](docs/screenshots/lcars-science-light.jpg) |
+| Lounge | ![Lounge dark](docs/screenshots/lcars-ten-forward-dark.jpg) | ![Lounge light](docs/screenshots/lcars-ten-forward-light.jpg) |
 
 ## What the themes change
 
-- An LCARS elbow frame around the left sidebar and the right panel.
+- A console elbow frame around the left sidebar and the right panel.
 - A thick frame around the thread window, with large elbows, a segmented top bar and a two-row bottom band with a readout.
-- Thread rows that look like LCARS menu buttons. The open thread is a solid rounded rectangle.
-- Sidebar groups in LCARS brackets. Collapsed group headers are complete bars.
-- Flat pill caps on the bottom status bar, and a TNG communicator for the Home icon.
+- Thread rows that look like console menu buttons. The open thread is a solid rounded rectangle.
+- Sidebar groups in console brackets. Collapsed group headers are complete bars.
+- Flat pill caps on the bottom status bar, and a communicator badge for the Home icon.
 - Pill buttons and badges.
-- Decorative LCARS numbers ("47-1701", "LCARS 23-781", "0400 · 4976").
-- A faded Galaxy-class blueprint behind the thread area. It takes the colour of the theme.
+- Decorative console number labels.
+- A faded starship blueprint behind the thread area. It takes the colour of the theme.
 
 All text colours pass WCAG AA contrast (4.5:1 or better).
 
@@ -38,15 +40,15 @@ All text colours pass WCAG AA contrast (4.5:1 or better).
 Install as a bb plugin from a local checkout:
 
 ```sh
-bb plugin install /path/to/bb-theme-lcars
+bb plugin install /path/to/bb-theme-lcars   # the checkout folder name can differ
 ```
 
 The plugin adds three themes. Select one in Settings, Appearance, or with the CLI:
 
 ```sh
-bb theme set plugin:lcars:lcars-tng
-bb theme set plugin:lcars:lcars-science
-bb theme set plugin:lcars:lcars-ten-forward
+bb theme set plugin:starship-console:console-bridge
+bb theme set plugin:starship-console:console-science
+bb theme set plugin:starship-console:console-lounge
 ```
 
 Check the package with `bb plugin build .`.

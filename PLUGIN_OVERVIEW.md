@@ -1,10 +1,10 @@
 ## What you get
 
-Three color themes for bb. Each theme has a light mode and a dark mode, and each repaints the whole app, not only the colors.
+Starship Console adds three retro sci-fi console color themes to bb. Each theme has a light mode and a dark mode, and each repaints the whole app, not only the colors.
 
-- **LCARS TNG**: orange and lavender on black glass (dark) or warm beige (light).
-- **LCARS Science**: a blue science and operations palette.
-- **LCARS Ten Forward**: purple and mauve.
+- **Starship Console: Bridge**: orange and lavender on black glass (dark) or warm beige (light).
+- **Starship Console: Science**: a blue science and operations palette.
+- **Starship Console: Lounge**: purple and mauve, a quiet lounge palette.
 
 All text colors pass WCAG AA contrast (4.5:1 or better).
 
@@ -19,10 +19,10 @@ All text colors pass WCAG AA contrast (4.5:1 or better).
 ## How to switch
 
 1. Install the plugin.
-2. Open Settings, then Appearance, and pick one of the three LCARS themes. Or run `bb theme set plugin:lcars:lcars-tng`.
+2. Open Settings, then Appearance, and pick one of the three Starship Console themes. Or run `bb theme set plugin:starship-console:console-bridge`.
 3. Change light or dark mode with the usual bb mode control.
 
-The theme ids are `plugin:lcars:lcars-tng`, `plugin:lcars:lcars-science` and `plugin:lcars:lcars-ten-forward`.
+The theme ids are `plugin:starship-console:console-bridge`, `plugin:starship-console:console-science` and `plugin:starship-console:console-lounge`.
 
 ## Requirements
 
@@ -36,4 +36,4 @@ Screenshots of all three themes in both modes are in the `docs/screenshots` fold
 
 ## Disclaimer
 
-This is a fan-made, Star Trek-inspired theme. It is not affiliated with, endorsed by, or sponsored by Paramount. LCARS and Star Trek are trademarks of their owners.
+Starship Console is a fan-made retro sci-fi console style, inspired by 1980s–90s TV sci-fi interfaces. It is not affiliated with, endorsed by, or sponsored by any studio.

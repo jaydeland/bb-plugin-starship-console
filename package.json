@@ -1,5 +1,5 @@
 {
-  "name": "bb-plugin-lcars",
+  "name": "bb-plugin-starship-console",
   "version": "0.1.0",
   "type": "module",
   "engines": {
@@ -7,8 +7,8 @@
     "bbPluginSdk": ">=0.6.132"
   },
   "bb": {
-    "name": "LCARS-style themes",
-    "description": "Three Star Trek-inspired console themes with light and dark modes. Fan-made, not affiliated with Paramount.",
+    "name": "Starship Console",
+    "description": "Three retro sci-fi console themes with light and dark modes. Inspired by 1980s–90s TV sci-fi interfaces. Fan-made; not affiliated with any studio.",
     "branding": {
       "icon": "./assets/icon.svg"
     },
@@ -16,20 +16,20 @@
     "skills": [],
     "themes": [
       {
-        "id": "lcars-tng",
-        "name": "LCARS TNG",
+        "id": "console-bridge",
+        "name": "Starship Console: Bridge",
         "description": "Orange and lavender, the classic bridge look.",
         "css": "./themes/lcars-tng/theme.css"
       },
       {
-        "id": "lcars-science",
-        "name": "LCARS Science",
+        "id": "console-science",
+        "name": "Starship Console: Science",
         "description": "Blue science and operations console.",
         "css": "./themes/lcars-science/theme.css"
       },
       {
-        "id": "lcars-ten-forward",
-        "name": "LCARS Ten Forward",
+        "id": "console-lounge",
+        "name": "Starship Console: Lounge",
         "description": "Purple and mauve lounge palette.",
         "css": "./themes/lcars-ten-forward/theme.css"
       }
