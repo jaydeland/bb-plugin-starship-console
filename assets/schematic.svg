@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="1200" height="780" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" font-family="monospace" font-size="13">
+<title>Original abstract technical schematic</title>
+<g stroke-width="0.6" stroke-opacity="0.45">
+<path d="M60 30V750"/>
+<path d="M120 30V750"/>
+<path d="M180 30V750"/>
+<path d="M240 30V750"/>
+<path d="M300 30V750"/>
+<path d="M360 30V750"/>
+<path d="M420 30V750"/>
+<path d="M480 30V750"/>
+<path d="M540 30V750"/>
+<path d="M600 30V750"/>
+<path d="M660 30V750"/>
+<path d="M720 30V750"/>
+<path d="M780 30V750"/>
+<path d="M840 30V750"/>
+<path d="M900 30V750"/>
+<path d="M960 30V750"/>
+<path d="M1020 30V750"/>
+<path d="M1080 30V750"/>
+<path d="M1140 30V750"/>
+<path d="M30 60H1170"/>
+<path d="M30 120H1170"/>
+<path d="M30 180H1170"/>
+<path d="M30 240H1170"/>
+<path d="M30 300H1170"/>
+<path d="M30 360H1170"/>
+<path d="M30 420H1170"/>
+<path d="M30 480H1170"/>
+<path d="M30 540H1170"/>
+<path d="M30 600H1170"/>
+<path d="M30 660H1170"/>
+<path d="M30 720H1170"/>
+</g>
+<rect x="30" y="30" width="1140" height="720" stroke-width="2"/>
+<rect x="42" y="42" width="1116" height="696" stroke-width="0.8"/>
+<g stroke-width="1.6">
+<path d="M477.8 345.5A130 130 0 1 1 477.8 434.5"/>
+<path d="M764.5 295.0A190 190 0 0 1 435.5 485.0"/>
+<path d="M365.1 475.5A250 250 0 1 1 834.9 475.5"/>
+<path d="M755.0 121.5A310 310 0 1 1 308.7 284.0"/>
+</g>
+<g stroke-width="1" stroke-dasharray="6 6">
+<circle cx="600" cy="390" r="100"/>
+<circle cx="600" cy="390" r="160"/>
+<circle cx="600" cy="390" r="220"/>
+<circle cx="600" cy="390" r="280"/>
+<circle cx="600" cy="390" r="340"/>
+</g>
+<g stroke-width="1.2">
+<path d="M940.0 390.0L952.0 390.0"/>
+<path d="M934.8 449.0L940.7 450.1"/>
+<path d="M919.5 506.3L925.1 508.3"/>
+<path d="M894.4 560.0L904.8 566.0"/>
+<path d="M860.5 608.5L865.1 612.4"/>
+<path d="M818.5 650.5L822.4 655.1"/>
+<path d="M770.0 684.4L776.0 694.8"/>
+<path d="M716.3 709.5L718.3 715.1"/>
+<path d="M659.0 724.8L660.1 730.7"/>
+<path d="M600.0 730.0L600.0 742.0"/>
+<path d="M541.0 724.8L539.9 730.7"/>
+<path d="M483.7 709.5L481.7 715.1"/>
+<path d="M430.0 684.4L424.0 694.8"/>
+<path d="M381.5 650.5L377.6 655.1"/>
+<path d="M339.5 608.5L334.9 612.4"/>
+<path d="M305.6 560.0L295.2 566.0"/>
+<path d="M280.5 506.3L274.9 508.3"/>
+<path d="M265.2 449.0L259.3 450.1"/>
+<path d="M260.0 390.0L248.0 390.0"/>
+<path d="M265.2 331.0L259.3 329.9"/>
+<path d="M280.5 273.7L274.9 271.7"/>
+<path d="M305.6 220.0L295.2 214.0"/>
+<path d="M339.5 171.5L334.9 167.6"/>
+<path d="M381.5 129.5L377.6 124.9"/>
+<path d="M430.0 95.6L424.0 85.2"/>
+<path d="M483.7 70.5L481.7 64.9"/>
+<path d="M541.0 55.2L539.9 49.3"/>
+<path d="M600.0 50.0L600.0 38.0"/>
+<path d="M659.0 55.2L660.1 49.3"/>
+<path d="M716.3 70.5L718.3 64.9"/>
+<path d="M770.0 95.6L776.0 85.2"/>
+<path d="M818.5 129.5L822.4 124.9"/>
+<path d="M860.5 171.5L865.1 167.6"/>
+<path d="M894.4 220.0L904.8 214.0"/>
+<path d="M919.5 273.7L925.1 271.7"/>
+<path d="M934.8 331.0L940.7 329.9"/>
+</g>
+<g stroke-width="2.4">
+<ellipse cx="600" cy="390" rx="250" ry="46"/>
+<ellipse cx="560" cy="390" rx="150" ry="26" stroke-width="1.4"/>
+<ellipse cx="720" cy="280" rx="170" ry="22"/>
+<ellipse cx="720" cy="500" rx="170" ry="22"/>
+<path d="M620 346L590 290M800 350L780 300M620 434L590 490M800 430L780 480"/>
+<path d="M350 390H290M850 390H910" stroke-width="1.2"/>
+</g>
+<path d="M60 390H1140" stroke-width="0.9" stroke-dasharray="22 5 3 5"/>
+<path d="M600 60V720" stroke-width="0.9" stroke-dasharray="22 5 3 5"/>
+<g stroke-width="1.2"><path d="M350 580L850 580"/>
+<path d="M350 580L363.2 584.8"/>
+<path d="M350 580L363.2 575.2"/>
+<path d="M350.0 571.0L350.0 589.0"/>
+<path d="M850 580L836.8 575.2"/>
+<path d="M850 580L836.8 584.8"/>
+<path d="M850.0 571.0L850.0 589.0"/>
+</g>
+<text x="600.0" y="572.0" text-anchor="middle" fill="#000" stroke="none">500.0</text>
+<g stroke-width="1.2"><path d="M100 150L100 630"/>
+<path d="M100 150L95.2 163.2"/>
+<path d="M100 150L104.8 163.2"/>
+<path d="M109.0 150.0L91.0 150.0"/>
+<path d="M100 630L104.8 616.8"/>
+<path d="M100 630L95.2 616.8"/>
+<path d="M109.0 630.0L91.0 630.0"/>
+</g>
+<text x="100.0" y="382.0" text-anchor="middle" fill="#000" stroke="none">480</text>
+<g stroke-width="1.2"><path d="M160 100L1040 100"/>
+<path d="M160 100L173.2 104.8"/>
+<path d="M160 100L173.2 95.2"/>
+<path d="M160.0 91.0L160.0 109.0"/>
+<path d="M1040 100L1026.8 95.2"/>
+<path d="M1040 100L1026.8 104.8"/>
+<path d="M1040.0 91.0L1040.0 109.0"/>
+</g>
+<text x="600.0" y="92.0" text-anchor="middle" fill="#000" stroke="none">880</text>
+<path d="M212 241L450 376" stroke-width="1.2"/><circle cx="450" cy="376" r="3" fill="#000"/>
+<rect x="190" y="230" width="22" height="22" rx="2" stroke-width="1.6"/>
+<text x="201" y="246" text-anchor="middle" fill="#000" stroke="none">01</text>
+<path d="M930 221L860 280" stroke-width="1.2"/><circle cx="860" cy="280" r="3" fill="#000"/>
+<rect x="930" y="210" width="22" height="22" rx="2" stroke-width="1.6"/>
+<text x="941" y="226" text-anchor="middle" fill="#000" stroke="none">02</text>
+<path d="M950 551L850 500" stroke-width="1.2"/><circle cx="850" cy="500" r="3" fill="#000"/>
+<rect x="950" y="540" width="22" height="22" rx="2" stroke-width="1.6"/>
+<text x="961" y="556" text-anchor="middle" fill="#000" stroke="none">03</text>
+<path d="M241 560L400 410" stroke-width="1.2"/><circle cx="400" cy="410" r="3" fill="#000"/>
+<rect x="230" y="560" width="22" height="22" rx="2" stroke-width="1.6"/>
+<text x="241" y="576" text-anchor="middle" fill="#000" stroke="none">04</text>
+<path d="M571 182L600 330" stroke-width="1.2"/><circle cx="600" cy="330" r="3" fill="#000"/>
+<rect x="560" y="160" width="22" height="22" rx="2" stroke-width="1.6"/>
+<text x="571" y="176" text-anchor="middle" fill="#000" stroke="none">05</text>
+<path d="M651 610L660 420" stroke-width="1.2"/><circle cx="660" cy="420" r="3" fill="#000"/>
+<rect x="640" y="610" width="22" height="22" rx="2" stroke-width="1.6"/>
+<text x="651" y="626" text-anchor="middle" fill="#000" stroke="none">06</text>
+<rect x="870" y="660" width="270" height="60" stroke-width="1.4"/>
+<path d="M870 690H1140M990 660V720" stroke-width="1"/>
+<text x="880" y="680" fill="#000" stroke="none">SCHEMATIC</text><text x="1000" y="680" fill="#000" stroke="none">REV 07</text><text x="880" y="710" fill="#000" stroke="none">SCALE 1:200</text><text x="1000" y="710" fill="#000" stroke="none">SHEET 1/1</text>
+</svg>

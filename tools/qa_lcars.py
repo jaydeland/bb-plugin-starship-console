@@ -173,7 +173,7 @@ for name, path in FILES.items():
         except ET.ParseError as e:
             res = f"PARSE FAIL {e}"; issues.append((name, "svg", f"uri[{idx}] {e}"))
         print(f"  uri[{idx}] {raw[:40]}... {res} ({len(svg)} chars decoded)")
-    # Blueprint background: one ::before host, masked by the galaxy PNG in the last block of the file.
+    # Blueprint background: one ::before host, masked by assets/schematic.svg in the last block of the file.
     if "drag-region" in css: issues.append((name, "fleet", "comm badge / drag-region rule still present"))
     m = re.search(r"\[data-thread-window\]::before \{(.*?)\n\}", chrome, re.S)
     if not m: issues.append((name, "blueprint", "::before rule missing"))
@@ -182,7 +182,7 @@ for name, path in FILES.items():
             if need not in m.group(1): issues.append((name, "blueprint", f"::before missing {need!r}"))
     if "viewBox='0 0 1400 950'" in chrome: issues.append((name, "blueprint", "dead SVG tile still present"))
     bp = chrome[chrome.find("/* ---------- LCARS blueprint background"):]
-    if "mask: url(\"data:image/png;base64," not in bp: issues.append((name, "blueprint", "galaxy mask missing"))
+    if "mask: url(\"data:image/svg+xml," not in bp: issues.append((name, "blueprint", "schematic mask missing"))
     if "\n/* ---------- " in bp[10:]: issues.append((name, "blueprint", "blueprint block is not the last block (apply_blueprint.py would move rules)"))
     if ".thread-scrollbar" not in css: issues.append((name, "fleet", ".thread-scrollbar rule missing"))
     REPORT[name] = dict(L=L, D=D, chrome=chrome, uris=uris)

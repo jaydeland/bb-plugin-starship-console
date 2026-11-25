@@ -73,13 +73,12 @@ bb reloads the theme when the file changes. Do not use both methods at the same 
 
 ### Replace the background image
 
-1. Make a mask from a blue-on-white blueprint PNG (RGB or RGBA, 8-bit, not interlaced):
-   `python3 tools/png_mask.py source.png assets/galaxy_mask.png`
-2. Embed the mask in all three themes: `python3 tools/apply_blueprint.py`
+1. Edit the single-colour drawing in `assets/schematic.svg`.
+2. Embed it in all three themes: `python3 tools/apply_blueprint.py`
 
 The tools use only the Python standard library.
 
 ## Notes
 
 - The styles target bb's live DOM (tested on bb 0.50.1). A bb update can change the DOM hooks, and some chrome can then stop matching.
-- The blueprint mask comes from a third-party Galaxy-class poster, and LCARS and Star Trek are Paramount trademarks. Keep this repo private and for internal use. Do not publish it to a plugin marketplace.
+- LCARS and Star Trek are Paramount trademarks. Keep this repo private and for internal use. Do not publish it to a plugin marketplace.

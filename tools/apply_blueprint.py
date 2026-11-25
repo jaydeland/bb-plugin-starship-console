@@ -1,14 +1,16 @@
-# Embed assets/galaxy_mask.png as the colour-masked background layer of each theme (idempotent).
-import base64, pathlib
+# Embed assets/schematic.svg as the colour-masked background layer of each theme (idempotent).
+import pathlib, re
+from urllib.parse import quote
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-b64 = base64.b64encode((ROOT / "assets/galaxy_mask.png").read_bytes()).decode()
+svg = re.sub(r">\s+<", "><", (ROOT / "assets/schematic.svg").read_text().strip()).replace('"', "'")
+uri = quote(svg, safe="/:=,.;'()- ").replace(" ", "%20")
 START = "/* ---------- LCARS blueprint background ---------- */"
 block = f'''{START}
 /* The schematic is a mask, so its ink takes --lcars-schematic in every theme and mode. */
 :root [data-thread-window]::before,
 :root.dark [data-thread-window]::before {{
   background-color: var(--lcars-schematic);
-  mask: url("data:image/png;base64,{b64}") center / contain no-repeat;
+  mask: url("data:image/svg+xml,{uri}") center / contain no-repeat;
 }}
 '''
 for n in ["lcars-tng", "lcars-science", "lcars-ten-forward"]:
