@@ -35,7 +35,25 @@ All text colours pass WCAG AA contrast (4.5:1 or better).
 
 ## Install
 
-Copy a theme folder into your bb theme directory, then select it:
+Install as a bb plugin from a local checkout:
+
+```sh
+bb plugin install /path/to/bb-theme-lcars
+```
+
+The plugin adds three themes. Select one in Settings, Appearance, or with the CLI:
+
+```sh
+bb theme set plugin:lcars:lcars-tng
+bb theme set plugin:lcars:lcars-science
+bb theme set plugin:lcars:lcars-ten-forward
+```
+
+Check the package with `bb plugin build .`.
+
+### Install as a custom theme
+
+Without the plugin, copy a theme folder into your bb theme directory, then select it:
 
 ```sh
 THEME_DIR="$HOME/.bb-machines/<your-bb-host>/theme"   # see `bb theme list` for the path
@@ -43,7 +61,7 @@ cp -R themes/lcars-tng themes/lcars-science themes/lcars-ten-forward "$THEME_DIR
 bb theme set lcars-tng
 ```
 
-bb reloads the theme when the file changes.
+bb reloads the theme when the file changes. Do not use both methods at the same time if you want one list of themes.
 
 ## Change the themes
 
